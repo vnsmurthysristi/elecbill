@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.js"></script>
+<script>    
+function myFunction()
+{
+	var n1=document.getElementById("n1");
+	var n2=document.getElementById("n2");
+	var n3=document.getElementById("n3");
+	var consum= Math.round((n2.value -n1.value)/n3.value);
+	var cost=0;
+	document.getElementById("output").innerHTML = 'Consumption: ' + (n2.value -n1.value).toString();
+	if(consum>200){	
+	consum= consum-200;
+	cost = 50*2.6+ 50*2.6+ 100* 3.6;
+	cost = cost + consum*6.9;
+	}
+	else if(consum>100 & consum <=200){
+	consum= consum-100;
+	cost = 50*2.6+ 50*2.6;
+	cost= cost + consum*3.6; 
+	}
+	else if(consum>50 & consum <=100){
+	consum= consum-50;
+	cost = 50*2.6;
+	cost= cost + consum*2.6; 
+	}
+	else{
+	cost= cost + consum*2.6;
+	}
+	cost = cost * Math.round(n3.value);
+	document.getElementById("output1").innerHTML = 'Total Bill (Rs): ' + cost.toString();
+}
+</script>
+</head>
+
+<body>
+
+<h2>Electricity Bill calculator</h2>
+<p><strong>Please Enter the past reading and current reading and Click on Submit</strong></p>
+
+<label for="n1">Past reading:</label><br>
+<input type="number" id="n1" name="n1"><br>
+<label for="n2">Current Reading:</label><br>
+<input type="number" id="n2" name="n2"><br><br>
+<label for="n3">Billing Cycle (months):</label><br>
+<input type="number" id="n3" name="n3"><br><br>
+<button type="submit" value="Submit" onclick="myFunction()">Submit</button> 
+
+
+<p id="output"> </p>
+<p id="output1"> </p>
+
+</body>
+</html>
